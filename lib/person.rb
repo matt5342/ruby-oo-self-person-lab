@@ -44,8 +44,13 @@ class Person
         state(@hygiene)
     end
 
+    # def increment(attribute, amount)
+    #     binding.pry
+    #     self.attribute = self.attribute + amount
+    # end
+
     def get_paid(salary)
-        # binding.pry
+        # @bank_account = increment("bank_account", salary)
         self.bank_account = self.bank_account + salary
         "all about the benjamins"
     end
