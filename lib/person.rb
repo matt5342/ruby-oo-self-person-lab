@@ -1,52 +1,49 @@
 require 'pry'
 
 class Person
+    attr_reader :name, :happiness, :hygiene
+    attr_accessor :bank_account
+
     def initialize(name)
         @name = name
         @happiness = 8
         @hygiene = 8
-        @balance = 25
+        @bank_account = 25
     end
-    attr_reader :name, :happiness, :hygiene
-    def bank_account
-        @balance
-    end
-    def bank_account=(new_balance)
-        @balance = new_balance
+
+    def min_max(new_value, attribute)
+        if new_value > 10
+            attribute = 10
+        elsif new_value < 0
+            attribute = 0
+        else
+            attribute = new_value
+        end
     end
 
     def happiness=(new_index)
-        if new_index > 10
-            @happiness = 10
-        elsif new_index < 0
-            @happiness = 0
-        else
-            @happiness = new_index
-        end
+        @happiness = min_max(new_index, @happiness)
     end
     def hygiene=(new_hygiene)
-        if new_hygiene > 10
-            @hygiene = 10
-        elsif new_hygiene < 0
-            @hygiene = 0
+        @hygiene = min_max(new_hygiene, @hygiene)
+    end
+    
+    def state(attribute)
+        if attribute > 7
+            true
         else
-            @hygiene = new_hygiene
+            false
         end
     end
+    
     def happy?
-        if @happiness > 7
-            true
-        else
-            false
-        end
+        state(@happiness)
     end
+
     def clean?
-        if @hygiene > 7
-            true
-        else
-            false
-        end
+        state(@hygiene)
     end
+
     def get_paid(salary)
         # binding.pry
         self.bank_account = self.bank_account + salary
