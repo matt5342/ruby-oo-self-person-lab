@@ -61,13 +61,25 @@ class Person
         self.happiness = self.happiness + 2
         "♪ another one bites the dust ♫"
     end
-
-
-
-
-
-
-
+    def call_friend(friend)
+        self.happiness = self.happiness + 3
+        friend.happiness = friend.happiness + 3
+        "Hi #{friend.name}! It's #{self.name}. How are you?"
+    end
+    def start_conversation(friend, topic)
+        case topic
+        when "politics"
+            self.happiness = self.happiness - 2
+            friend.happiness = friend.happiness - 2
+            "blah blah partisan blah lobbyist"
+        when "weather"
+            self.happiness = self.happiness + 1
+            friend.happiness = friend.happiness + 1
+            "blah blah sun blah rain"
+        else 
+            "blah blah blah blah blah"
+        end
+    end
 
 
 end
